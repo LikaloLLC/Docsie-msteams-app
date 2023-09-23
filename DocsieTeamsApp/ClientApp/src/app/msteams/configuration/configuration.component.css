@@ -1,0 +1,108 @@
+body {
+  background-color: #f2f2f2; /* Light gray background similar to Microsoft Teams */
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff; /* White container background */
+  border: 1px solid #d8d8d8; /* Light gray border */
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.input-field {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #d8d8d8; /* Light gray border */
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+}
+
+.submit-button {
+  background-color: #6264a7; /* Microsoft Teams blue */
+  color: #ffffff; /* White text color */
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+  .submit-button:hover {
+    background-color: #5052a2; /* Slightly darker blue on hover */
+  }
+
+.dropdown .btn:focus {
+  box-shadow: none !important;
+}
+
+.select-box {
+  padding: 5px 0 5px 0;
+  margin-bottom: 10px
+}
+
+/* Apply custom styles to the select element */
+.form-select {
+  appearance: none;
+  background-color: #f3f2f1;
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #333;
+  width: 100%;
+  cursor: pointer;
+}
+
+  /* Style the dropdown arrow */
+  .form-select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: #555;
+  }
+
+  /* Hover effect */
+  .form-select:hover {
+    border-color: #0078d4;
+  }
+
+  /* Focus effect */
+  .form-select:focus {
+    border-color: #0078d4;
+    box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.3);
+  }
+
+  /* Disabled state */
+  .form-select:disabled {
+    background-color: #f0f0f0;
+    color: #999;
+    cursor: not-allowed;
+  }
+
+/* Apply Teams-like colors for light theme */
+body.light-theme .form-select {
+  background-color: #f3f2f1;
+  border: 1px solid #eaeaea;
+  color: #333;
+}
+
+/* Apply Teams-like colors for dark theme */
+body.dark-theme .form-select {
+  background-color: #333;
+  border: 1px solid #555;
+  color: #eee;
+}

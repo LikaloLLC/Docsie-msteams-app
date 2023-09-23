@@ -1,0 +1,44 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+  "version": "1.0.0",
+  "manifestVersion": "1.16",
+  "id": "d1306ddb-a555-4cf4-a5e2-e8778efa4828",
+  "packageName": "com.package.name",
+  "name": {
+    "short": "DocsieTeamsApp",
+    "full": ""
+  },
+  "developer": {
+    "name": "Docsie",
+    "mpnId": "",
+    "websiteUrl": "https://www.microsoft.com/",
+    "privacyUrl": "https://www.microsoft.com/",
+    "termsOfUseUrl": "https://www.microsoft.com/"
+  },
+  "description": {
+    "short": "Docsie Teams App - V1",
+    "full": "This application is developed by Docsie"
+  },
+  "icons": {
+    "outline": "outline.png",
+    "color": "color.png"
+  },
+  "accentColor": "#FFFFFF",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://localhost:44407/config",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ],
+      "context": [
+        "channelTab"
+      ]
+    }
+  ],
+  "validDomains": [ "*.ngrok.io", "localhost:44407" ],
+  "webApplicationInfo": {
+    "id": "46ad890f-9836-470f-91ff-086ad3787dc9",
+    "resource": ""
+  }
+}

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="key-form" *ngIf="!isAuthTokenAvailable">
+    <h6>API Key</h6>
+    <form (ngSubmit)="onSubmit()">
+      <div class="input-container">
+        <input type="text" class="input-field" placeholder="Enter your API Key" [(ngModel)]="formData.apiKey" name="apiKey" required>
+        <button type="submit" class="submit-button">Submit</button>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="isAuthTokenAvailable">
+    <div class="select-box" *ngIf="workspaceMetaModel && workspaceMetaModel.workspaceModels && workspaceMetaModel.workspaceModels.length > 0">
+      <h6>Select a Workspace</h6>
+      <select class="form-select" aria-label="Select a workspace" [(ngModel)]="selectedWorkspaceId" (change)="onChangeWorkspace($event)">
+        <option *ngFor="let workspace of workspaceMetaModel.workspaceModels" [value]="workspace.id">{{workspace.name}}</option>
+      </select>
+    </div>
+    <div class="select-box" *ngIf="deploymentMetaModel && deploymentMetaModel.deploymentModels && deploymentMetaModel.deploymentModels.length > 0">
+      <h6>Select a Deployment</h6>
+      <select class="form-select" aria-label="Select a deployment" [(ngModel)]="selectedDeploymentId" (change)="onChangeDeployment($event)">
+        <option *ngFor="let deployment of deploymentMetaModel.deploymentModels" [value]="deployment.id">{{deployment.name}}</option>
+      </select>
+    </div>
+  </div>
+  
+  
+</div>

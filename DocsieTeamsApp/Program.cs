@@ -1,4 +1,8 @@
 using Docsie.Application.Services;
+using Docsie.Data.Core.Repositories;
+using Docsie.Data.Core;
+using Docsie.Data.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,8 +11,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
+var azuresqlConnectionString = builder.Configuration.GetSection("AzureSQL:ConnectionString").Value;
+builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer(azuresqlConnectionString, x => x.EnableRetryOnFailure()));
+
+
 builder.Services.AddHttpClient<IDocsieService, DocsieService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<ITokenRepository, TokenRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddCors(x => x.AddPolicy("CorsPolicy", build => { build.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(); }));
 

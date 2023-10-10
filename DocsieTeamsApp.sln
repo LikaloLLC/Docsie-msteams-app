@@ -5,7 +5,9 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocsieTeamsApp", "DocsieTeamsApp\DocsieTeamsApp.csproj", "{012D65F2-2166-4039-8A74-C5CE081F5EBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Docsie.Application", "Docsie.Application\Docsie.Application.csproj", "{40765AFB-97C4-48A8-BD89-918EE81B6796}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Docsie.Application", "Docsie.Application\Docsie.Application.csproj", "{40765AFB-97C4-48A8-BD89-918EE81B6796}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Docsie.Data", "Docsie.Data\Docsie.Data.csproj", "{B31DAFB2-C556-457A-887D-97EDC9EF5AC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{40765AFB-97C4-48A8-BD89-918EE81B6796}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40765AFB-97C4-48A8-BD89-918EE81B6796}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40765AFB-97C4-48A8-BD89-918EE81B6796}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B31DAFB2-C556-457A-887D-97EDC9EF5AC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B31DAFB2-C556-457A-887D-97EDC9EF5AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B31DAFB2-C556-457A-887D-97EDC9EF5AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B31DAFB2-C556-457A-887D-97EDC9EF5AC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -22,7 +22,7 @@ namespace DocsieTeamsApp.Controllers
             {
                 var authToken = await this.authService.GetAuthenticationTokenAsync(tenantId);
                
-                if (authToken == null)
+                if (string.IsNullOrEmpty(authToken))
                 {
                     return Ok(new { status = HttpStatusCode.OK, isTokenAvailable = false });
                 }
@@ -44,9 +44,9 @@ namespace DocsieTeamsApp.Controllers
                 {
                     return Ok(new { status = HttpStatusCode.BadRequest, errorMessage = "tenantId or token can't be null" });
                 }
-                var authTokenModel = await this.authService.SaveAuthenticationTokenAsync(tokenModel);
+                await this.authService.SaveAuthenticationTokenAsync(tokenModel);
 
-                return Ok(new { status = HttpStatusCode.OK, authTokenModel });
+                return Ok(new { status = HttpStatusCode.OK });
             }
             catch (Exception ex)
             {

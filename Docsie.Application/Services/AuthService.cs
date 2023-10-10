@@ -18,7 +18,7 @@ namespace Docsie.Application.Services
            
             if (tokenEntity == null) return string.Empty;
 
-            return tokenEntity.Token; // "7GI7v3GESge86Xnfl9hmB44W6x0iYc";
+            return tokenEntity.Token;
         }
 
         public async Task SaveAuthenticationTokenAsync(AuthTokenModel tokenModel)

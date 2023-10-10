@@ -10,7 +10,7 @@ namespace Docsie.Application.Services
     public interface IAuthService
     {
         Task<string> GetAuthenticationTokenAsync(string tenantId);
-        Task<AuthTokenModel> SaveAuthenticationTokenAsync(AuthTokenModel tokenModel);
+        Task SaveAuthenticationTokenAsync(AuthTokenModel tokenModel);
 
     }
 }

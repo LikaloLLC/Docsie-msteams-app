@@ -1,22 +1,39 @@
 ﻿using Docsie.Application.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Docsie.Data.Core;
+using Docsie.Data.Entities;
 
 namespace Docsie.Application.Services
 {
     public class AuthService : IAuthService
     {
-        public async Task<string> GetAuthenticationTokenAsync(string tenantId)
+        private IUnitOfWork _unitOfWork;
+        public AuthService(IUnitOfWork unitOfWork)
         {
-            return "7GI7v3GESge86Xnfl9hmB44W6x0iYc";
+            _unitOfWork = unitOfWork;
         }
 
-        public async Task<AuthTokenModel> SaveAuthenticationTokenAsync(AuthTokenModel tokenModel)
+        public async Task<string> GetAuthenticationTokenAsync(string tenantId)
         {
-            return new AuthTokenModel();
+            var tokenEntity =  await _unitOfWork.Token.GetFirstOrDefaultAsync(x => x.TenantId == tenantId);
+           
+            if (tokenEntity == null) return string.Empty;
+
+            return tokenEntity.Token; // "7GI7v3GESge86Xnfl9hmB44W6x0iYc";
+        }
+
+        public async Task SaveAuthenticationTokenAsync(AuthTokenModel tokenModel)
+        {
+            var existingToken = await _unitOfWork.Token.GetFirstOrDefaultAsync(x => x.TenantId == tokenModel.TenantId);
+            if (existingToken == null) {
+                var tokenEntity = new TokenEntity()
+                {
+                    TenantId = tokenModel.TenantId,
+                    Token = tokenModel.Token,
+                };
+                await _unitOfWork.Token.AddAsync(tokenEntity);
+            }
+
+            await _unitOfWork.CompleteAsync();
         }
     }
 }

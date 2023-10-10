@@ -19,6 +19,7 @@ export class ConfigurationComponent {
   deploymentMetaModel: any = null;
   formData: any = {};
   isAuthTokenAvailable: boolean = false;
+  showMainLoader: boolean = true;
   selectedWorkspaceId: string;
   selectedDeploymentId: string;
   selectedDeploymentScript: string;
@@ -80,6 +81,7 @@ export class ConfigurationComponent {
 
   isAuthTokenAvailableAsync() {
     this.authService.isAuthTokenAvailableAsync(this.tenantId).subscribe(res => {
+      this.showMainLoader = false;
       if (res.status == HttpStatusCode.Ok) {
         this.isAuthTokenAvailable = res.isTokenAvailable;
         if (this.isAuthTokenAvailable) {
@@ -110,13 +112,14 @@ export class ConfigurationComponent {
     this.docsieService.getDeploymentsAsync(this.tenantId, event.target.value).subscribe(res => {
       if (res.status == HttpStatusCode.Ok) {
         this.deploymentMetaModel = res.deploymentMetaModel;
-        this.selectedDeploymentId = this.deploymentMetaModel.deploymentModels[0].id;
+        if (this.deploymentMetaModel.deploymentModels.length > 0) {
+          this.selectedDeploymentId = this.deploymentMetaModel.deploymentModels[0].id;
 
-        this.selectedDeploymentScript = this.deploymentMetaModel.deploymentModels[0].script;
-        if (this.selectedDeploymentScript) {
-          microsoftTeams.pages.config.setValidityState(true);
+          this.selectedDeploymentScript = this.deploymentMetaModel.deploymentModels[0].script;
+          if (this.selectedDeploymentScript) {
+            microsoftTeams.pages.config.setValidityState(true);
+          }
         }
-
       } else {
         this.toastr.error(res.errorMessage, 'Internal Server Error', {
           timeOut: 5000,

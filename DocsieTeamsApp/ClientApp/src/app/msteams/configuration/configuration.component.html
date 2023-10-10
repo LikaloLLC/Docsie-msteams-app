@@ -1,4 +1,5 @@
-<div class="container">
+<div *ngIf="showMainLoader" class="my-loader"></div>
+<div *ngIf="!showMainLoader" class="container">
   <div class="key-form" *ngIf="!isAuthTokenAvailable">
     <h6>API Key</h6>
     <form (ngSubmit)="onSubmit()">

@@ -18,6 +18,22 @@ body {
   margin-top: 20px;
 }
 
+
+.my-loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 60px;
+  height: 60px;
+  margin: -76px 0 0 -34px;
+  border: 8px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid #5b5fc7;
+  -webkit-animation: spin 1s linear infinite;
+  animation: rotation 1s linear infinite;
+}
+
 .input-field {
   flex: 1;
   padding: 10px;
